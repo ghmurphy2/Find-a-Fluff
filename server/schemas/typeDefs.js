@@ -16,12 +16,12 @@ const typeDefs = gql`
         user: User
     }
 
-    input imageInput{
+    input faceDetect{
         imageId: String
         imageUrl: String!
     }
 
-    input imageCompare{
+    input faceCompare{
         // image1/2id??
         imageUrl: String!
         image2Url: String!
