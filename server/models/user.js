@@ -18,6 +18,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    albums:[{
+        type: Schema.Types.ObjectId,
+        ref: "album"
+    }]
 })
 
 const Image = mongoose.model('Image', imageSchema)
