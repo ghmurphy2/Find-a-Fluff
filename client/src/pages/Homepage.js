@@ -21,9 +21,9 @@ function Homepage() {
             Learn React
           </a> */}
         </header>
-        <body className="App-body">
+        <div className="mainContainer">
         <img src={logo} className="App-logo" alt="logo" />
-        </body>
+        </div>
         <footer className="App-footer">
           <p>Made with love</p>
         </footer>
