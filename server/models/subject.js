@@ -6,13 +6,13 @@ const subjectSchema = new Schema({
         type: String,
         required: true
     },
-    album: [
+    albums: [
         {
           type: Schema.Types.ObjectId,
           ref: 'Album',
         },
     ],
-    image: [
+    images: [
         {
           type: Schema.Types.ObjectId,
           ref: 'Image',

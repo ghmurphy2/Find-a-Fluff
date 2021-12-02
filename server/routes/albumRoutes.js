@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Router } = require('express');
 const {Album, User} = require('../models');
 
 // Create new album
@@ -22,7 +23,7 @@ router.get("/:id", async (req, res) => {
 })
 
 // Get all albums of a user by user id
-router.get("/:user_id", async (req, res) => {
+router.get("/user/:user_id", async (req, res) => {
     try {
         const data = await User.find({_id: mongojs.ObjectID(req.params.user_id)}).populate('album');
         res.status(200).json(data);
@@ -30,6 +31,7 @@ router.get("/:user_id", async (req, res) => {
         res.status(400).json(err);
     }
 })
+
 // Delete album by album id
 router.delete('/:id', async (req, res)=>{
     try{
@@ -40,7 +42,17 @@ router.delete('/:id', async (req, res)=>{
     }
 })
 
+// Get all albums of a subject by subject id
+router.get("/subject/:subject_id", async (req, res) => {
+    try {
+        const data = await Subject.find({_id: mongojs.ObjectID(req.params.subject_id)}).populate('albums');
+        res.status(200).json(data);
+    } catch (err){
+        res.status(400).json(err);
+    }
+})
 
+module.exports = router
 
 
 
