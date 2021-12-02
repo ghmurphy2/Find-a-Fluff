@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+#loggedinLinks {
+  background-color: #282c34;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;
@@ -25,7 +36,7 @@
   color: white;
 }
 
-.App-body {
+.mainContainer {
   background-color: #a1b9e9;
   min-height: 85vh;
   display: flex;
@@ -49,7 +60,7 @@
   color: #61dafb;
 }
 
-.AppNavbar-navbar {
+#AppNavbar-navbar {
   background-color: #282c34;
   max-height: fit-content;
   display: flex;
