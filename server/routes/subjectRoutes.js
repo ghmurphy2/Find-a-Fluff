@@ -21,3 +21,12 @@ router.delete('/:id', async (req, res)=>{
     }
 })
 
+// Update subject information by subject id
+router.put("/update/:id", async (req, res) => {
+    try {
+        const data = await Subject.findByIdAndUpdate({_id: mongojs.ObjectID(req.params.id)}, {$set:{name:req.body.name}});
+        res.status(200).json(data);
+    } catch (err){
+        res.status(400).json(err);
+    }
+})

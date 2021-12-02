@@ -32,6 +32,16 @@ router.get("/user/:user_id", async (req, res) => {
     }
 })
 
+// Update album by album id (after image is added or removed) (req.body is new array of images)
+router.put("/update/:id", async (req, res) => {
+    try {
+        const data = await Album.findByIdAndUpdate({_id: mongojs.ObjectID(req.params.id)}, {$set:{images:req.body}});
+        res.status(200).json(data);
+    } catch (err){
+        res.status(400).json(err);
+    }
+})
+
 // Delete album by album id
 router.delete('/:id', async (req, res)=>{
     try{
