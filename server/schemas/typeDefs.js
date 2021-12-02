@@ -23,8 +23,10 @@ const typeDefs = gql`
 
     input faceCompare{
         // image1/2id??
-        imageUrl: String!
-        image2Url: String!
+        imageUrl: String
+        image2Url: String
+        face_token1: String
+        face_token2: String
 
     }
 
