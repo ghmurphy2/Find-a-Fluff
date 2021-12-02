@@ -10,16 +10,20 @@ const imageSchema = new Schema({
         type:String,
         required: true
     },
-    album: [
+    album: 
         {
           type: Schema.Types.ObjectId,
           ref: 'Album',
         },
-    ],
-    user: [
+    user: 
         {
           type: Schema.Types.ObjectId,
           ref: 'User',
+        },
+    subjects: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Subject',
         },
     ],
 })
