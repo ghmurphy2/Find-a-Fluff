@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, Card } from 'react-bootstrap';
 import { getMe, deleteImage } from '../utils/API';
 import Auth from '../utils/auth';
+import loading from '../loading.gif'
 // import logo from '../logo.svg'
 // import { removeImageId } from '../utils/localStorage';
 
@@ -67,7 +68,15 @@ const MyImages = () => {
   
     // if data isn't here yet, say so
     if (!userDataLength) {
-      return "LOADING..." ;
+      return (
+        <Container>
+        <div>
+        "LOADING..." 
+        </div>
+        <img src={loading} alt="loading..." />
+        
+        </Container>
+      );
 
     }
   
