@@ -3,7 +3,7 @@
 }
 
 #loggedinLinks {
-  background-color: #282c34;
+  background-color: transparent;
   max-height: fit-content;
   display: flex;
   flex-direction: row;
@@ -26,7 +26,7 @@
 }
 
 #carouselCard {
-  background-color: #D7D4CC;
+  background-color: #F9D030;
   min-height: max-content;
 }
 
@@ -37,8 +37,12 @@
   
 }
 
+#imageUploader{
+  background-color: transparent;
+}
+
 .App-header {
-  background-color: #9CA0A1;
+  /* background-color: #9CA0A1; */
   max-height: fit-content;
   display: flex;
   flex-direction: row;
@@ -49,7 +53,7 @@
 }
 
 .mainContainer {
-  background-color: #4D6772;
+  background-color: #F62AA0;
   min-height: 68vh;
   display: flex;  
   flex-direction: column;
@@ -59,7 +63,7 @@
 }
 
 .App-footer {
-  background-color: #A7C0BE;
+  background-color: #B8EE30;
   min-height: 15vh;
   display: flex;
   flex-direction: row;
@@ -74,7 +78,7 @@
 }
 
 #AppNavbar-navbar {
-  background-color: #282c34;
+  background-color: #B8EE30;
   max-height: fit-content;
   display: flex;
   flex-direction: row;
@@ -86,9 +90,9 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
   }
 }
