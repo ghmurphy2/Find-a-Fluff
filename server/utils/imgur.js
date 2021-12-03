@@ -71,17 +71,32 @@ Imgur.prototype = {
         };
         xhttp.send(data);
         xhttp = null;
-    }
+    },
+    createUploadArea: function () {
+        let dropArea, clickArea, input;
+        dropArea = this.createEls('p', {}, 'Drop Image File Here');
+        clickArea = this.createEls('p', {}, 'Or click here to select image');
+        input = this.createEls('input', {type: 'file', multiple: 'multiple', className: 'input', accept: 'image/*'});
 
+    Array.prototype.forEach.call(this.info, function (area) {
+        area.appendChild(p1);
+        area.appendChild(p2);
+    }.bind(this));
+    Array.prototype.forEach.call(this.dropzone, function (zone) {
+        zone.appendChild(input);
+        this.status(zone);
+        this.upload(zone);
+    }.bind(this));
+},
+loading: function(){
+    var div, table, img;
+    div = this.createEls('div', {className: 'loading-modal'});
+    table = this.createEls('table', {className: 'loading-table'});
+    img = this.createEls('img', {className: 'loading-image', src: '../client/public/assets/loadinggif.gif'});
 
-
-
-
-
-
-
-
-
-    }
+    div.appendChild(table);
+    table.appendChild(img);
+    document.body.appendChild(div);
+},
 }
 )
