@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Col, Form, Button, Card } from 'react-bootstrap';
+import React from 'react';
+import { Container, Card } from 'react-bootstrap';
 import ControlledCarousel from '../components/Carousel'
 
 // import Auth from '../utils/auth';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 
 import '../App.css';
 
