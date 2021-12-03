@@ -10,12 +10,15 @@ const albumSchema = new Schema({
         type:Date,
         default: Date.now
     },
-    user: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-        },
-    ],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    images:[{
+        type: Schema.Types.ObjectId,
+        ref: "image"
+    }]
+    
 })
 
 const Album = mongoose.model('Album', albumSchema)

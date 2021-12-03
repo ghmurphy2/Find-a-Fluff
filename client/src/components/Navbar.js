@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
+import logo from '../logo.svg';
 
 import Auth from '../utils/auth';
 import '../App.css';
@@ -11,42 +12,49 @@ const AppNavbar = () => {
     //setting the modal display state
     const [showModal, setShowModal] = useState(false);
 
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
+
     return(
         <>
-        <Navbar  bg='dark' variant='dark' expand='lg'>
-            <Container class="AppNavbar-navbar" fluid>
-                <Navbar.Brand as={Link} to='/'>
-                Sorta My Face
+        <Navbar id="AppNavbar-navbar"  bg='dark' variant='dark' expand='lg'>
+            <Container id="AppNavbar-navbar" fluid>
+                <Navbar.Brand class="align-text-bottom" as={Link} to='/'>
+                        Sorta My Face
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls='navbar' />
-                <Navbar.Collapse id='navbar'>
-                <Nav className='ml-auto'>
-                    {/* <Nav.Link as={Link} to='/'>
-                    Upload Image
-                    </Nav.Link>
-                    <Nav.Link as={Link} to='/'>
-                    View Album
-                    </Nav.Link> */}
+
+              <img src={logo} className="App-logo" alt="logo" />
+              
+                {/* <Navbar.Toggle aria-controls='navbar' />
+                <Navbar.Collapse id='navbar'> */}
+                <Nav id="loggedinLinks" className='ml-auto align-text-bottom'>
                     {/* if user is logged in show saved books and logout */}
                     {Auth.loggedIn() ? (
                     <>
+                        
                         <Nav.Link as={Link} to='/saved'>
                         See your Images
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/'>
+                        Upload Image
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/'>
+                        View Album
                         </Nav.Link>
                         <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                     </>
                     ) : (
-                    <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                    <Nav.Link onClick={handleShow}>Login/Sign Up</Nav.Link>
                     )}
                 </Nav>
-                </Navbar.Collapse>
+                {/* </Navbar.Collapse> */}
             </Container>
         </Navbar>
         {/* set modal data up */}
       <Modal
         size='lg'
         show={showModal}
-        onHide={() => setShowModal(false)}
+        onHide={handleClose}
         aria-labelledby='signup-modal'>
         {/* tab container to do either signup or login component */}
         <Tab.Container defaultActiveKey='login'>

@@ -2,46 +2,70 @@
   text-align: center;
 }
 
+#loggedinLinks {
+  background-color: #282c34;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .App-logo {
-  height: 20vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-    align-items: flex-start;
+    /* align-items: flex-start; */
   }
 }
 
+#carouselCard {
+  background-color: #D7D4CC;
+  min-height: max-content;
+}
+
+#carouselImg{
+  width: 60%;
+  height: auto;
+  max-height: 800px;
+  
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #9CA0A1;
   max-height: fit-content;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-body {
-  background-color: #a1b9e9;
-  min-height: 85vh;
-  display: flex;
+.mainContainer {
+  background-color: #4D6772;
+  min-height: 68vh;
+  display: flex;  
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .App-footer {
-  background-color: #000000;
+  background-color: #A7C0BE;
   min-height: 15vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
+  text-align: center;
   color: white;
 }
 
@@ -49,13 +73,13 @@
   color: #61dafb;
 }
 
-.AppNavbar-navbar {
+#AppNavbar-navbar {
   background-color: #282c34;
   max-height: fit-content;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
