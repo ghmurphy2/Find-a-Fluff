@@ -2,7 +2,7 @@
 // drag or image address upload
 // post route for image, create ele, 
 // data.link
-
+// axios refactor?
 (function (root, factory) {
     "use strict";
     if (typeof define === 'function' && define.amd) {
