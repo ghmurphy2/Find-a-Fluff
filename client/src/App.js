@@ -10,13 +10,19 @@ function App() {
   return (
     <Router>
       <>
-        <Navbar class="AppNavbar-navbar" />
+        <Navbar />
         <Switch>
           <Route exact path='/'>
             <Homepage />
           </Route>
         </Switch>
       </>
+      <footer className="App-footer">
+          <p>Made with 
+          <br/>💜 & 🍕
+          <br/>Created By: Tony Zhang, Gavin Murphy, Matt Weichel
+            </p>
+      </footer>
     </Router>
   );
 };

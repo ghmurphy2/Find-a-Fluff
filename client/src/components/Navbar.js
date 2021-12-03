@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
+import logo from '../logo.svg';
 
 import Auth from '../utils/auth';
 import '../App.css';
@@ -18,16 +19,19 @@ const AppNavbar = () => {
         <>
         <Navbar id="AppNavbar-navbar"  bg='dark' variant='dark' expand='lg'>
             <Container id="AppNavbar-navbar" fluid>
-                
+                <Navbar.Brand class="align-text-bottom" as={Link} to='/'>
+                        Sorta My Face
+                </Navbar.Brand>
+
+              <img src={logo} className="App-logo" alt="logo" />
+              
                 {/* <Navbar.Toggle aria-controls='navbar' />
                 <Navbar.Collapse id='navbar'> */}
-                <Nav id="loggedinLinks" className='ml-auto'>
+                <Nav id="loggedinLinks" className='ml-auto align-text-bottom'>
                     {/* if user is logged in show saved books and logout */}
                     {Auth.loggedIn() ? (
                     <>
-                        <Navbar.Brand as={Link} to='/'>
-                        Sorta My Face
-                        </Navbar.Brand>
+                        
                         <Nav.Link as={Link} to='/saved'>
                         See your Images
                         </Nav.Link>
