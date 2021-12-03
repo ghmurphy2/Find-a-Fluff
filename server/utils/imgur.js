@@ -33,5 +33,55 @@
         this.info = document.querySelectorAll('.info');
         this.run();
 }
+Imgur.prototype = {
+    createEl: function( name, props, text){
+        let el = document.createElement(name), p;
+    for (p in props){
+        if(props.hasOwnProperty(p)) {
+            el[p] = props[p];
+        }
+    }
+        if (text) {
+            el.appendchild(document.createTextNode(text));
+        }
+        return el;
+    },
+    insertAfter: function (referenceNode, newNode){
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSIbling);
+    },
+    post: function (path,data, callback){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('POST', path, true);
+        xhttp.setRequestHeader('Authorization', "Client-ID" + this.client);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4){
+                if (this.sttatus >= 200 && this.status < 300){
+                    var response = '';
+                    try {
+                        response = JSON.parse(this.responseText);
+                    } catch(error){
+                        console.logf(error)
+                    }
+                    callback.call(window, response);
+                }else{
+                    throw new Error(this.status)
+                }
 
+            }
+        };
+        xhttp.send(data);
+        xhttp = null;
+    }
+
+
+
+
+
+
+
+
+
+
+    }
+}
 )
