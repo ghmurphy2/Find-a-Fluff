@@ -36,11 +36,20 @@ export const loginUser = (userData) => {
 
 // DELETE IMAGE for Logged in User
 export const deleteImage = (imageId, token) => {
-    return fetch(`/api/users/books/${imageId}`, {
+    return fetch(`/api/users/images/${imageId}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${token}`,
       },
     });
-  };
+};
   
+// DELETE ALBUM for Logged in User
+export const deleteAlbum = (albumId, token) => {
+  return fetch(`/api/users/albums/${albumId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};

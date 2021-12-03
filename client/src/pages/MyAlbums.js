@@ -1,13 +1,14 @@
+// ================THIS PAGE DISPLAYS USER'S SAVED IMAGES, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Card } from 'react-bootstrap';
-import { getMe, deleteImage } from '../utils/API';
+import { getMe, deleteAlbum } from '../utils/API';
 import Auth from '../utils/auth';
 import logo from '../logo.svg'
 // import { removeImageId } from '../utils/localStorage';
 
 import '../App.css';
 
-const MyPage = () => {
+const MyAlbums = () => {
     const [userData, setUserData] = useState({});
   
     // use this to determine if `useEffect()` hook needs to run again
@@ -38,8 +39,8 @@ const MyPage = () => {
       getUserData();
     }, [userDataLength]);
   
-    // create function that accepts the image's mongo _id value as param and deletes the image from the database
-    const handleDeleteImage = async (imageId) => {
+    // create function that accepts the album's mongo _id value as param and deletes the album from the database
+    const handleDeleteAlbum = async (albumId) => {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
   
       if (!token) {
@@ -47,7 +48,7 @@ const MyPage = () => {
       }
   
       try {
-        const response = await deleteImage(imageId, token);
+        const response = await deleteAlbum(albumId, token);
   
         if (!response.ok) {
           throw new Error('something went wrong!');
@@ -74,17 +75,17 @@ const MyPage = () => {
       <>
         <Container fluid className='text-light bg-dark'>
           <Container>
-            <h1>Viewing saved images!</h1>
+            <h1>Viewing saved albums!</h1>
           </Container>
         </Container>
         <Container>
           <h2>
-            {userData.savedImages.length
-              ? `Viewing ${userData.savedImages.length} saved ${userData.savedImages.length === 1 ? 'image' : 'images'}:`
-              : 'You have no saved images!'}
+            {userData.savedAlbums.length
+                ?`Viewing ${userData.Albums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
+                : 'You have no saved images!'}
           </h2>
           <Container>
-            {userData.savedImages.map((image) => {
+            {userData.savedAlbums.map((image) => {
               return (
                 <Card key={image.imageId} border='dark'>
                   {image ? <Card.Img src={image.imageId} alt="an image" variant='top' /> : null}
@@ -92,8 +93,8 @@ const MyPage = () => {
                     <Card.Title>{image.title}</Card.Title>
                     <p className='small'>Creator: {image.username}</p>
                     <Card.Text>{image.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteImage(image.imageId)}>
-                      Delete this Image!
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(image.imageId)}>
+                      Delete this Album!
                     </Button>
                   </Card.Body>
                 </Card>
@@ -105,4 +106,4 @@ const MyPage = () => {
     );
   };
 
-export default MyPage;
+export default MyAlbums;
