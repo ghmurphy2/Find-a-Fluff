@@ -18,14 +18,14 @@ function addImg(e, content){
         imageDiv.appendChild(newImageDiv)
     }
 }
-
-var feedback = function(res){
+// image reference link for display
+let feedback = function(res){
     report(res, true);
     if (res.success === true){
-        var get_link = res.data.link.replace(/^http:\/\//i, 'https://');
+        let get_link = res.data.link.replace(/^http:\/\//i, 'https://');
         // bootstrap required
         document.querySelector('.status').classList.add('bg-info');
-        var content = 
+        let content = 
         'Image : ' + '<br><input class="image-url" value=\"' + get_link + '\"/>' 
              + '<img class="img" alt="Imgur-Upload" src=\"' + get_link + '\"/>';
              addImg('.status', content);

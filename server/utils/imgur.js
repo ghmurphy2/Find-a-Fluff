@@ -1,7 +1,8 @@
 // format for imgur upload
 // drag or image address upload
 // post route for image, create ele, 
-
+// data.link
+// axios refactor?
 (function (root, factory) {
     "use strict";
     if (typeof define === 'function' && define.amd) {
@@ -89,7 +90,7 @@ Imgur.prototype = {
     }.bind(this));
 },
 loading: function(){
-    var div, table, img;
+    let div, table, img;
     div = this.createEls('div', {className: 'loading-modal'});
     table = this.createEls('table', {className: 'loading-table'});
     img = this.createEls('img', {className: 'loading-image', src: '../client/public/assets/loadinggif.gif'});
@@ -98,5 +99,70 @@ loading: function(){
     table.appendChild(img);
     document.body.appendChild(div);
 },
+status: function (el) {
+    let div = this.createEls('div', {className: 'status'});
+
+    this.insertAfter(el, div);
+},
+matchFiles: function (file, zone, fileCount) {
+    let status = zone.nextSibling;
+    if (file.type.match(/image/) && file.type !== 'image/svg+xml') {
+        document.body.classList.add('loading');
+        status.classList.remove('bg-success', 'bg-danger');
+        status.innerHTML = '';
+
+        let fd = new FormData();
+        fd.append('image', file);
+
+        this.post(this.endpoint, fd, function (data) {
+            if (fileCount[0]+1 == fileCount[1]) {
+                document.body.classList.remove('loading');
+            }
+            typeof this.callback === 'function' && this.callback.call(this, data);
+        }.bind(this));
+    } else {
+        status.classList.remove('bg-success');
+        status.classList.add('bg-danger');
+        status.innerHTML = 'Invalid archive';
+    }
+},
+
+upload: function (zone) {
+    let events = ['dragenter', 'dragleave', 'dragover', 'drop'],
+        file, target, i, len;
+
+    zone.addEventListener('change', function (e) {
+        if (e.target && e.target.nodeName === 'INPUT' && e.target.type === 'file') {
+            target = e.target.files;
+
+            for (i = 0, len = target.length; i < len; i += 1) {
+                file = target[i];
+                this.matchFiles(file, zone, [i, target.length]);
+            }
+        }
+    }.bind(this), false);
+
+    events.map(function (event) {
+        zone.addEventListener(event, function (e) {
+            if (e.target && e.target.nodeName === 'INPUT' && e.target.type === 'file') {
+                if (event === 'dragleave' || event === 'drop') {
+                    e.target.parentNode.classList.remove('dropzone-dragging');
+                } else {
+                    e.target.parentNode.classList.add('dropzone-dragging');
+                }
+            }
+        }, false);
+    });
+},
+run: function () {
+    let loadingModal = document.querySelector('.loading-modal');
+
+    if (!loadingModal) {
+        this.loading();
+    }
+    this.createDragZone();
 }
-)
+};
+
+return Imgur;
+}));
