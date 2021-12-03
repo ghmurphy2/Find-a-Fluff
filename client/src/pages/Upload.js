@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, Component } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 import '../App.css';
@@ -9,7 +10,9 @@ class App extends Component{
    const imageEl = document.getElementsByClassName('input-image')[0].files[0]
    var imgurUrl
 
+
    form.append('image', imageEl)
+
 
    request.open( 'POST', 'https://api.imgur.com/3/image/')
    request.setRequestHeader('Authorization', "Client-ID" + client);
@@ -56,5 +59,4 @@ request.send(form)
     );
   }
 }
-  
-  export default Upload;
+   export default Upload;

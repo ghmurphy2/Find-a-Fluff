@@ -20,32 +20,32 @@ const AppNavbar = () => {
         <Navbar id="AppNavbar-navbar"  bg='dark' variant='dark' expand='lg'>
             <Container id="AppNavbar-navbar" fluid>
                 <Navbar.Brand class="align-text-bottom" as={Link} to='/'>
-                        Sorta My Face
+                  <img src={logo} className="App-logo" alt="logo" />
                 </Navbar.Brand>
 
-              <img src={logo} className="App-logo" alt="logo" />
+              
               
                 {/* <Navbar.Toggle aria-controls='navbar' />
                 <Navbar.Collapse id='navbar'> */}
                 <Nav id="loggedinLinks" className='ml-auto align-text-bottom'>
                     {/* if user is logged in show saved books and logout */}
-                    {Auth.loggedIn() ? (
-                    <>
+                    {/* {Auth.loggedIn() ? (
+                    <> */}
                         
-                        <Nav.Link as={Link} to='/saved'>
-                        See your Images
+                        <Nav.Link as={Link} to='/myImages'>
+                        View My Images
                         </Nav.Link>
                         <Nav.Link as={Link} to='/'>
                         Upload Image
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/'>
-                        View Album
+                        <Nav.Link as={Link} to='/myAlbums'>
+                        View My Albums
                         </Nav.Link>
                         <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                    </>
-                    ) : (
+                    {/* </>
+                    ) : ( */}
                     <Nav.Link onClick={handleShow}>Login/Sign Up</Nav.Link>
-                    )}
+                    {/* )} */}
                 </Nav>
                 {/* </Navbar.Collapse> */}
             </Container>
