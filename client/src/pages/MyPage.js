@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { Container, Button, Card } from 'react-bootstrap';
 import { getMe, deleteImage } from '../utils/API';
 import Auth from '../utils/auth';
+import logo from '../logo.svg'
 // import { removeImageId } from '../utils/localStorage';
 
 import '../App.css';
@@ -37,7 +38,7 @@ const MyPage = () => {
       getUserData();
     }, [userDataLength]);
   
-    // create function that accepts the book's mongo _id value as param and deletes the book from the database
+    // create function that accepts the image's mongo _id value as param and deletes the image from the database
     const handleDeleteImage = async (imageId) => {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
   
@@ -54,8 +55,10 @@ const MyPage = () => {
   
         const updatedUser = await response.json();
         setUserData(updatedUser);
-        // upon success, remove book's id from localStorage
-        removeImageId(imageId);
+
+        // **========SET UP LOCAL STORAGE??????=========**
+        // upon success, remove image's id from localStorage
+        // removeImageId(imageId);
       } catch (err) {
         console.error(err);
       }
@@ -63,23 +66,24 @@ const MyPage = () => {
   
     // if data isn't here yet, say so
     if (!userDataLength) {
-      return <h2>LOADING...</h2>;
+      return <img src={logo} className="App-logo" alt="logo">LOADING...</img> ;
+
     }
   
     return (
       <>
-        <Jumbotron fluid className='text-light bg-dark'>
+        <Container fluid className='text-light bg-dark'>
           <Container>
-            <h1>Viewing saved books!</h1>
+            <h1>Viewing saved images!</h1>
           </Container>
-        </Jumbotron>
+        </Container>
         <Container>
           <h2>
             {userData.savedImages.length
               ? `Viewing ${userData.savedImages.length} saved ${userData.savedImages.length === 1 ? 'image' : 'images'}:`
               : 'You have no saved images!'}
           </h2>
-          <CardColumns>
+          <Container>
             {userData.savedImages.map((image) => {
               return (
                 <Card key={image.imageId} border='dark'>
@@ -88,14 +92,14 @@ const MyPage = () => {
                     <Card.Title>{image.title}</Card.Title>
                     <p className='small'>Creator: {image.username}</p>
                     <Card.Text>{image.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteImage(image.imageId)}>
                       Delete this Image!
                     </Button>
                   </Card.Body>
                 </Card>
               );
             })}
-          </CardColumns>
+          </Container>
         </Container>
       </>
     );

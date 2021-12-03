@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card } from 'react-bootstrap';
 import ControlledCarousel from '../components/Carousel'
 
 // import Auth from '../utils/auth';
