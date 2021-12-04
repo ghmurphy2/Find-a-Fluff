@@ -35,7 +35,7 @@ const AppNavbar = () => {
                         <Nav.Link as={Link} to='/myImages'>
                         View My Images
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/'>
+                        <Nav.Link as={Link} to='/upload'>
                         Upload Image
                         </Nav.Link>
                         <Nav.Link as={Link} to='/myAlbums'>
