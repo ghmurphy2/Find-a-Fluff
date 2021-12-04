@@ -69,12 +69,11 @@ const MyImages = () => {
     // if data isn't here yet, say so
     if (!userDataLength) {
       return (
-        <Container>
-        <div>
-        "LOADING..." 
-        </div>
-        <img src={loading} alt="loading..." />
-        
+        <Container  id="loadingDiv">
+          <div>
+            <h2>"LOADING..." </h2>
+            <img src={loading} alt="loading..." />
+          </div>
         </Container>
       );
 
