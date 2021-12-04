@@ -18,7 +18,7 @@ function App() {
           <Route exact path='/' component={Homepage} />
           <Route exact path='/myImages' component={MyImages} />
           <Route exact path='/myAlbums' component={MyAlbums}/> 
-          <Route exact path='/upload' component={Upload} /> 
+          {/* <Route exact path='/upload' component={Upload} />  */}
         </Switch>
       </>
       <footer className="App-footer">
