@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import MyImages from './pages/MyImages';
 import MyAlbums from './pages/MyAlbums';
-import Upload from './pages/Upload';
+import Upload from './pages/upload2';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -18,7 +18,7 @@ function App() {
           <Route exact path='/' component={Homepage} />
           <Route exact path='/myImages' component={MyImages} />
           <Route exact path='/myAlbums' component={MyAlbums}/> 
-          {/* <Route exact path='/upload' component={Upload} />  */}
+          <Route exact path='/upload2' component={Upload} /> 
         </Switch>
       </>
       <footer className="App-footer">
