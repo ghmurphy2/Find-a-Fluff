@@ -19,7 +19,7 @@ const AppNavbar = () => {
         <>
         <Navbar id="AppNavbar-navbar"  bg='dark' variant='dark' expand='lg'>
             <Container id="AppNavbar-navbar" fluid>
-                <Navbar.Brand class="align-text-bottom" as={Link} to='/'>
+                <Navbar.Brand className="align-text-bottom" as={Link} to='/'>
                   <img src={logo} className="App-logo" alt="logo" />
                 </Navbar.Brand>
 
