@@ -12,7 +12,8 @@ import '../App.css';
 function MyAlbums() {
   return (
     <div  >
-    <Container >     
+    <Container > 
+          {/*addition of formik  */}
       </Container>
     </div>
   );
