@@ -71,3 +71,4 @@ export const saveBreed = (breedData, token) => {
 export const searchDogBreeds = (query) => {
   return fetch(`https://dog.ceo/api/breed/${query}/images`);
 };
+
