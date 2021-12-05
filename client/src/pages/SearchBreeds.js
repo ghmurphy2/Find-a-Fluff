@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Col, Form, Button, Card } from 'react-bootstrap';
 
 // import Auth from '../utils/auth';
@@ -35,12 +35,12 @@ function SearchBreeds() {
                 throw new Error('ruff-row! something went wrong!');
             }
 
-            const { items } = await response.json();
-
-            const breedData = items.map((breed) => ({
-                breedId: breed.message
+            const  items  = await response.json();
+            console.log(items)  
+            const breedData = items.message.map((breed) => ({
+                breedId: breed
             }));
-
+            console.log(breedData);
             setSearchedBreeds(breedData);
             setSearchInput('');
         } catch (err) {
@@ -109,8 +109,8 @@ function SearchBreeds() {
                     {searchedBreeds.map((breed) => {
                         return (
                             <Card key={breed.breedId} border='dark'>
-                                {breed.message ? (
-                                    <Card.Img src={breed.message} alt={`The picture for ${breed}`} variant='top' />
+                                {breed ? (
+                                    <Card.Img src={breed.breedId} alt={`The picture for `} variant='top' />
                                 ): null}
                                 {/* <Card.Body>
                                     <Card.Title>{breed.status}</Card.Title>
