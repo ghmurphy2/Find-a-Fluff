@@ -10,7 +10,7 @@ function formHandler(){
         e.preventDefault();
         var zip = document.getElementsById('zip').value;
         var url = 'https://api.https://api.petfinder.com/v2/types/${animalType}.com/pet.getRandom';
-        // placeholder query
+        // placeholder query search params, type ie cat dog, breed, proximity require user zip, 
         $.ajax({
 			url: url,
 			jsonp: "callback",
@@ -30,6 +30,12 @@ function formHandler(){
                 var petName = res.petfinder.pet.name.$t;
                 var img = res.petfinder.pet.media.photos.photo[0].$t;
                 var id = res.petfinder.pet.id.$t;
+                var breed = res.petfinder.pet.breed.primary$t;
+                var email = res.petfinder.pet.contact.email.$t;
+                var phoneNum = res.petfinder.pet.contact.phone.$t;
+                var distanceAway = res.petfinder.pet.distance.$t;
+                var available = res.petfinder.pet.status.$t;
+
                 // additional pet info
                 // var petName = res.petfinder.pet.name.$t;
                 // var petName = res.petfinder.pet.name.$t;
