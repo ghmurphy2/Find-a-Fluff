@@ -38,8 +38,8 @@ const AppNavbar = () => {
                         <Nav.Link as={Link} to='/upload'>
                         Upload Image
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/myAlbums'>
-                        View My Albums
+                        <Nav.Link as={Link} to='/PetSearch'>
+                        Search Pets
                         </Nav.Link>
                         <Nav.Link as={Link} to='/searchBreeds'>
                         Search Breeds

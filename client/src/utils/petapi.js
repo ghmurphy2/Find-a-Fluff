@@ -50,7 +50,7 @@ function formHandler(){
 
                 newDiv.appendChild(newName);
 				list.appendChild(newDiv);
-				list.appendChild(newImg);
+				list.appendChild(newImg);;
             }
         });
     })
