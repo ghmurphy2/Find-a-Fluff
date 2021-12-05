@@ -20,10 +20,10 @@ const userSchema = new Schema({
     },
     albums:[{
         type: Schema.Types.ObjectId,
-        ref: "album"
+        ref: "Album"
     }]
 })
 
-const Image = mongoose.model('Image', imageSchema)
+const User = mongoose.model('User', userSchema)
 
-module.exports = Image
+module.exports = User
