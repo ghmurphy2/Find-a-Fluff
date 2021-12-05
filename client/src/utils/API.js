@@ -53,3 +53,21 @@ export const deleteAlbum = (albumId, token) => {
     },
   });
 };
+
+// save book data for a logged in user
+export const saveBreed = (breedData, token) => {
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(breedData),
+  });
+};
+
+
+//Search Dog Breeds
+export const searchDogBreeds = (query) => {
+  return fetch(`https://dog.ceo/api/breed/${query}/images/random`);
+};
