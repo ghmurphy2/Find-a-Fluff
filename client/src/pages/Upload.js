@@ -1,5 +1,5 @@
 
-// import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 // import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 // import '../App.css';
 // class App extends Component{
@@ -60,3 +60,44 @@
 //   }
 // }
 //    export default Upload;
+
+import { Container, Card } from 'react-bootstrap';
+import axios from 'axios'
+
+async function postImage(image){
+    const formData = new FormData()
+    formData.append("image", image)
+
+    const result = await axios.post('/images', formData, {headers: {"Content-Type": "multipart/form-data"},})
+    return result.data
+}
+
+
+function ImgUpload() {
+    const [file, setFile] = useState(0)
+
+    async function fileSelect(e){
+        const file = e.target.files[0]
+        setFile(file)
+    }
+
+    async function upload(e){
+        e.preventDefault()
+        const result = await postImage({image:file})
+        console.log(result)
+    }
+
+    return (
+      <div className="mainContainer" >
+        <form onSubmit={upload}>
+            <input id='imageInput' type='file' accept='image/*' onChange={fileSelect}></input> 
+            <button type="submit">Upload</button>
+        </form>
+      <Container>     
+
+      </Container>
+      </div>
+    );
+  }
+  
+  export default ImgUpload;
