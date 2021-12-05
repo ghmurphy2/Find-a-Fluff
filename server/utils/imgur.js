@@ -25,9 +25,9 @@
             throw "Please use a valid Client ID"
         }
         this.clientid = options.clientid;
-        this.endpoint = 'https://api.imgur.com/sortaface';
+        this.endpoint = 'https://api.imgur.com/3/';
 
-        //  https://api.imgur.com/3/ upload url
+        //   upload url
         // throws no image if not hosted, communicating with server and client id
         this.callback = options.callback || undefined;
         this.upload = document.querySelectorAll('.upload');
