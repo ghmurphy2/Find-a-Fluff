@@ -20,6 +20,16 @@ app.get('/s3Url', async (req, res) => {
   const url = await generateUploadURL()
   res.send({url})
 })
+app.post('/images', upload.single('image'), async(req,res) =>{
+  const file = req.fileconsole.log(file)
+
+//   const result = await uploadFile(file)
+//   await unlinkFile(file.path)
+//   console.log(result)
+//   const description = req.body.description
+//   res.send({imagePath: `/images/${result.Key}`})
+// })
+})
 
 
 db.once('open', () => {
