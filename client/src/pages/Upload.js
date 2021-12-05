@@ -67,8 +67,10 @@ import axios from 'axios'
 async function postImage(image){
     const formData = new FormData()
     formData.append("image", image)
+    console.log('formData: '+formData)
 
     const result = await axios.post('/images', formData, {headers: {"Content-Type": "multipart/form-data"},})
+    console.log("result.data: "+result.data)
     return result.data
 }
 

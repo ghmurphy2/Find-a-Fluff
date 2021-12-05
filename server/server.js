@@ -4,6 +4,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
+const {uploadFile, getFileStream} = require('./utils/s3')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,9 +19,17 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 // aws=====
-app.get('/s3Url', async (req, res) => {
-  const url = await generateUploadURL()
-  res.send({url})
+// app.get('/s3Url', async (req, res) => {
+//   const url = await generateUploadURL()
+//   res.send({url})
+// })
+
+app.get('/images/:key', (req, res) => {
+  console.log(req.params)
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
 })
 
 app.post('/images', upload.single('image'), async (req, res) => {
