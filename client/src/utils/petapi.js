@@ -9,7 +9,7 @@ function formHandler(){
     document.getElementsById('submitZip').addEventlistener('click', function(e){
         e.preventDefault();
         var zip = document.getElementsById('zip').value;
-        var url = 'https://api.petfinder.com/pet.getRandom';
+        var url = 'https://api.https://api.petfinder.com/v2/types/${animalType}.com/pet.getRandom';
         // placeholder query
         $.ajax({
 			url: url,
