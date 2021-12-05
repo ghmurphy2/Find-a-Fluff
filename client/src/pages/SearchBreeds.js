@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Col, Form, Button, Card, CardGroup, Row } from 'react-bootstrap';
 
 // import Auth from '../utils/auth';
 import {  searchDogBreeds } from '../utils/API';
@@ -41,6 +41,7 @@ function SearchBreeds() {
                 breedId: breed
             }));
             console.log(breedData);
+            console.log(searchInput)
             setSearchedBreeds(breedData);
             setSearchInput('');
         } catch (err) {
@@ -105,16 +106,19 @@ function SearchBreeds() {
                         ? `Viewing ${searchedBreeds.length} reuslts:`
                         : 'Search for a breed to begin!'}
                 </h2>
-                <Card>
+                <CardGroup>
                     {searchedBreeds.map((breed) => {
                         return (
-                            <Card key={breed.breedId} border='dark'>
+                            <Row >
+                            {Array.from({ length: 1 }).map((_, idx) => ( 
+                            <Col xs={{order: 'last'}} className="g-4">
+                            <Card  key={breed.breedId} border='dark'>
                                 {breed ? (
                                     <Card.Img src={breed.breedId} alt={`The picture for `} variant='top' />
                                 ): null}
-                                {/* <Card.Body>
-                                    <Card.Title>{breed.status}</Card.Title>
-                                    {Auth.loggedIn() && (
+                                <Card.Body>
+                                    <Card.Title className="mb-2 text-dark">Check Out This Pup</Card.Title> 
+                                    {/* {Auth.loggedIn() && (
                                         <Button
                                         disabled={savedBreedIds?.some((savedBreedId) => savedBreedId === breed.breedId)}
                                         className='btn-block btn-info'
@@ -122,13 +126,16 @@ function SearchBreeds() {
                                             {savedBreedIds?.some((savedBreedId) => savedBreedId === breed.breedId)
                                             ? 'This breed has already been saved!'
                                             : 'Save this Breed!'}
-                                        </Button>
-                                    )}
-                                </Card.Body> */}
+                                        </Button> 
+                                    )}*/}
+                                </Card.Body>
                             </Card>
+                            </Col>
+                            ))}
+                            </Row>       
                         );
                     })}
-                </Card>
+                </CardGroup>
             </Container>
         </div>     
     );
