@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Container, Col, Form, Button, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Col, Form, Button, Card, CardGroup, Row } from 'react-bootstrap';
 
-// import Auth from '../utils/auth';
-import {  searchDogBreeds } from '../utils/API';
-// import { saveBreedIds, getSavedBreedIds } from '../utils/localStorage';
+import Auth from '../utils/auth';
+import {  saveBreed, searchDogBreeds } from '../utils/API';
+import { saveBreedIds, getSavedBreedIds } from '../utils/localStorage';
 
 function SearchBreeds() {
     
@@ -13,12 +13,12 @@ function SearchBreeds() {
     const [searchInput, setSearchInput] = useState('');
 
     //create state to hold saved breedId values
-    // const [savedBreedIds, setSavedBreedIds] = useState(getSavedBreedIds());
+    const [savedBreedIds, setSavedBreedIds] = useState(getSavedBreedIds());
 
     //set up useEffect hook to save `savedBreedIds` list to localStorage on component unmount
-    // useEffect(() => {
-    //     return () => saveBreedIds(savedBreedIds);
-    // });
+    useEffect(() => {
+        return () => saveBreedIds(savedBreedIds);
+    });
 
     //create method to search for breeds and set state on form submit
     const handleFormSubmit = async (event) => {
@@ -41,6 +41,7 @@ function SearchBreeds() {
                 breedId: breed
             }));
             console.log(breedData);
+            console.log(searchInput)
             setSearchedBreeds(breedData);
             setSearchInput('');
         } catch (err) {
@@ -49,30 +50,30 @@ function SearchBreeds() {
     };
 
     //create function to handle saving a breed to our database
-    // const handleSaveBreed = async (breedId) => {
-    //     //find breed in `searchedBreeds` state by matching id
-    //     const breedToSave = searchedBreeds.find((breed) => breed.breedId === breedId );
+    const handleSaveBreed = async (breedId) => {
+        //find breed in `searchedBreeds` state by matching id
+        const breedToSave = searchedBreeds.find((breed) => breed.breedId === breedId );
 
-    //     //get token
-    //     // const token = Auth.loggedIn() ? Auth.getToken() : null;
+        //get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    //     // if (!token) {
-    //     //     return false;
-    //     // }
+        if (!token) {
+            return false;
+        }
 
-    //     // try {
-    //     //     const response = await saveBreed(breedToSave, token);
+        try {
+            const response = await saveBreed(breedToSave, token);
 
-    //     //     if(!response.ok) {
-    //     //         throw new Error('ruff-row! something went wrong!');
-    //     //     }
+            if(!response.ok) {
+                throw new Error('ruff-row! something went wrong!');
+            }
 
-    //     //     //if breed successfully saves to user's account, save breed id to state
-    //     //     setSavedBreedIds([...savedBreedIds, breedToSave.breedId]);
-    //     // } catch (err) {
-    //     //     console.error(err);
-    //     }
-    // };
+            //if breed successfully saves to user's account, save breed id to state
+            setSavedBreedIds([...savedBreedIds, breedToSave.breedId]);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <div className="mainContainer">
@@ -105,15 +106,18 @@ function SearchBreeds() {
                         ? `Viewing ${searchedBreeds.length} reuslts:`
                         : 'Search for a breed to begin!'}
                 </h2>
-                <Card>
+                <CardGroup>
                     {searchedBreeds.map((breed) => {
                         return (
-                            <Card key={breed.breedId} border='dark'>
+                            <Row >
+                            {Array.from({ length: 1 }).map((_, idx) => ( 
+                            <Col xs={{order: 'last'}} className="g-4">
+                            <Card  key={breed.breedId} border='dark'>
                                 {breed ? (
                                     <Card.Img src={breed.breedId} alt={`The picture for `} variant='top' />
                                 ): null}
-                                {/* <Card.Body>
-                                    <Card.Title>{breed.status}</Card.Title>
+                                <Card.Body>
+                                    <Card.Title className="mb-2 text-dark">Check Out This Pup</Card.Title> 
                                     {Auth.loggedIn() && (
                                         <Button
                                         disabled={savedBreedIds?.some((savedBreedId) => savedBreedId === breed.breedId)}
@@ -122,13 +126,16 @@ function SearchBreeds() {
                                             {savedBreedIds?.some((savedBreedId) => savedBreedId === breed.breedId)
                                             ? 'This breed has already been saved!'
                                             : 'Save this Breed!'}
-                                        </Button>
+                                        </Button> 
                                     )}
-                                </Card.Body> */}
+                                </Card.Body>
                             </Card>
+                            </Col>
+                            ))}
+                            </Row>       
                         );
                     })}
-                </Card>
+                </CardGroup>
             </Container>
         </div>     
     );
