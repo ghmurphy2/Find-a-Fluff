@@ -42,7 +42,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
+  // save a breed to a user's `savedBreeds` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
   async saveBreed({ user, body }, res) {
     console.log(user);
@@ -58,7 +58,7 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
-  // remove a book from `savedBooks`
+  // remove a breed from `savedBreeds`
   async deleteBreed({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
