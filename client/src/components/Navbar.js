@@ -41,6 +41,9 @@ const AppNavbar = () => {
                         <Nav.Link as={Link} to='/myAlbums'>
                         View My Albums
                         </Nav.Link>
+                        <Nav.Link as={Link} to='/searchBreeds'>
+                        Search Breeds
+                        </Nav.Link>
                         <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                     {/* </>
                     ) : ( */}
