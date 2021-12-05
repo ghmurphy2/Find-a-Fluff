@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import MyImages from './pages/MyImages';
-import MyAlbums from './pages/MyAlbums';
+// import MyAlbums from './pages/MyAlbums';
 import Upload from './pages/Upload';
 import SearchBreeds from './pages/SearchBreeds';
 
@@ -18,7 +18,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/myImages' component={MyImages} />
-          <Route exact path='/myAlbums' component={MyAlbums}/> 
+          {/* <Route exact path='/myAlbums' component={MyAlbums}/>  */}
           <Route exact path='/upload' component={Upload} /> 
           <Route exact path='/searchBreeds' component={SearchBreeds} />
         </Switch>
