@@ -69,5 +69,5 @@ export const saveBreed = (breedData, token) => {
 
 //Search Dog Breeds
 export const searchDogBreeds = (query) => {
-  return fetch(`https://dog.ceo/api/breed/${query}/images`);
+  return fetch(`https://dog.ceo/api/breed/${query}/images/random/20`);
 };
