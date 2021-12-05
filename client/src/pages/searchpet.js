@@ -13,8 +13,6 @@ function MyAlbums() {
   return (
     <div  >
     <Container >     
-      <h1>Photo Album Viewer</h1>
-      <div id="viewer" />
       </Container>
     </div>
   );
