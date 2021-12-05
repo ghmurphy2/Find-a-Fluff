@@ -19,10 +19,10 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 // aws=====
-// app.get('/s3Url', async (req, res) => {
-//   const url = await generateUploadURL()
-//   res.send({url})
-// })
+app.get('/s3Url', async (req, res) => {
+  const url = await generateUploadURL()
+  res.send({url})
+})
 
 app.get('/images/:key', (req, res) => {
   console.log(req.params)

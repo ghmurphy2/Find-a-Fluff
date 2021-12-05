@@ -32,14 +32,14 @@
 //   return uploadURL
 // }
 
-require('dotenv').config()
+// require('dotenv').config()
 const fs = require('fs')
 const S3 = require('aws-sdk/clients/s3')
 
 const bucketName = 'sortamyfaceapp'
 const region = 'us-west-1'
 const accessKeyId = 'AKIAWLZPGF5JNKPWTII5'
-const secretAccessKey = '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'
+const secretAccessKey = '32wXHL8fS+a5ERWGcm0ZtKLDX+M10GpX3b2lKiVo'
 
 const s3 = new S3({
   region,
