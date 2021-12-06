@@ -23,14 +23,15 @@ const SignupForm = () => {
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
     try {
       const response = await createUser(userFormData);
+        console.log(response)
         if(!response.ok) {
             throw new Error('oops, try that again!')
         }

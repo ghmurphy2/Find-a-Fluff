@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState } from 'react';
 // import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 // import '../App.css';
 // class App extends Component{
@@ -61,7 +61,7 @@ import React, { useState, useEffect, Component } from 'react';
 // }
 //    export default Upload;
 
-import { Container, Card } from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import axios from 'axios'
 
 async function postImage(image){

@@ -25,32 +25,32 @@ const AppNavbar = () => {
 
               
               
-                {/* <Navbar.Toggle aria-controls='navbar' />
-                <Navbar.Collapse id='navbar'> */}
-                <Nav id="loggedinLinks" className='ml-auto align-text-bottom'>
-                    {/* if user is logged in show saved books and logout */}
-                    {/* {Auth.loggedIn() ? (
-                    <> */}
-                        
-                        <Nav.Link as={Link} to='/myImages'>
-                        View My Images
-                        </Nav.Link>
-                        <Nav.Link as={Link} to='/upload'>
-                        Upload Image
-                        </Nav.Link>
-                        <Nav.Link as={Link} to='/PetSearch'>
-                        Search Pets
-                        </Nav.Link>
-                        <Nav.Link as={Link} to='/searchBreeds'>
-                        Search Breeds
-                        </Nav.Link>
-                        <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                    {/* </>
-                    ) : ( */}
-                    <Nav.Link onClick={handleShow}>Login/Sign Up</Nav.Link>
-                    {/* )} */}
-                </Nav>
-                {/* </Navbar.Collapse> */}
+                <Navbar.Toggle aria-controls='navbar' />
+                <Navbar.Collapse id='navbar'>
+                  <Nav id="loggedinLinks" className='ml-auto align-text-bottom'>
+                      {/* if user is logged in show saved books and logout */}
+                      {Auth.loggedIn() ? (
+                      <>
+                          
+                          <Nav.Link as={Link} to='/myImages'>
+                          View My Images
+                          </Nav.Link>
+                          <Nav.Link as={Link} to='/upload'>
+                          Upload Image
+                          </Nav.Link>
+                          <Nav.Link as={Link} to='/PetSearch'>
+                          Search Pets
+                          </Nav.Link>
+                          <Nav.Link as={Link} to='/searchBreeds'>
+                          Search Breeds
+                          </Nav.Link>
+                          <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                      </>
+                      ) : (
+                      <Nav.Link onClick={handleShow}>Login/Sign Up</Nav.Link>
+                      )}
+                    </Nav>
+              </Navbar.Collapse> 
             </Container>
         </Navbar>
         {/* set modal data up */}
