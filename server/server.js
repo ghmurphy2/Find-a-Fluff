@@ -31,7 +31,7 @@ app.get('/images/:key', (req, res) => {
 
   readStream.pipe(res)
 })
-
+app.get( )
 app.post('/images', upload.single('image'), async (req, res) => {
   const file = req.file
   console.log("file: "+file)
