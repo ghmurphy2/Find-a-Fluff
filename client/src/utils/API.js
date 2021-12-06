@@ -35,26 +35,17 @@ export const loginUser = (userData) => {
 
 
 // DELETE IMAGE for Logged in User
-export const deleteBreed = (breedId, token) => {
-    return fetch(`/api/users/savedBreeds/${breedId}`, {
+export const deleteBreed = (breedData, token) => {
+    return fetch(`/api/users/breeds/${breedData.breedId}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${token}`,
       },
     });
 };
-  
-// DELETE ALBUM for Logged in User
-export const deleteAlbum = (albumId, token) => {
-  return fetch(`/api/users/albums/${albumId}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
-};
 
-// save breed data for a logged in user
+
+// save book data for a logged in user
 export const saveBreed = (breedData, token) => {
   return fetch('/api/users', {
     method: 'PUT',
