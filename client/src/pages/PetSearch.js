@@ -1,7 +1,7 @@
 // ================THIS PAGE DISPLAYS USER'S SAVED ALBUMS, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import {React} from 'react';
 import { Container } from 'react-bootstrap';
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, useFormik } from "formik";
 // import { getMe, deleteAlbum } from '../utils/API';
 // import Auth from '../utils/auth';
 // import loading from '../loading.gif'
@@ -48,6 +48,7 @@ function PetSearch() {
         <label>Please input a prefered pet gender(if applicable)<Field name="gender" type="text" /></label>
         <h1>    </h1>
         <label>Please enter your zip code so we can see who is in your neighborhood!<Field name="zipCode" type="text" placeholder="required" /></label>
+        {/* require */}
         <h1>    </h1>
 
           <div id="checkbox-group">Please check below for other members of your family so we can select the best pal for everyone.</div>
@@ -55,16 +56,19 @@ function PetSearch() {
            <label><Field name="dogSafe" type="checkbox" />Dogs</label>
             <label><Field name="catSafe" type="checkbox" />Cats</label>
             <label><Field name="childSafe" type="checkbox" />Small Children</label>
+            
     
           </div>
           <button type="submit">Submit</button>
         </Form>
       </Formik>
+    
+    
     </div>
       </Container>
       <Container>
         <h1>
-          
+
         </h1>
       </Container>
     </div>
