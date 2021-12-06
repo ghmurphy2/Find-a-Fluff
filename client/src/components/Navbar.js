@@ -33,11 +33,11 @@ const AppNavbar = () => {
                       <>
                           
                           <Nav.Link as={Link} to='/myImages'>
-                          View My Images
+                          Saved Breeds
                           </Nav.Link>
-                          <Nav.Link as={Link} to='/upload'>
+                          {/* <Nav.Link as={Link} to='/upload'>
                           Upload Image
-                          </Nav.Link>
+                          </Nav.Link> */}
                           <Nav.Link as={Link} to='/PetSearch'>
                           Search Pets
                           </Nav.Link>
