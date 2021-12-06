@@ -26,10 +26,15 @@ const LoginForm = () => {
         }
     
         try {
-          const { data } = await loginUser({
-            variables: {...userFormData}
-          });
-          Auth.login(data.login.token);
+          const response = await loginUser(userFormData);
+
+          if(!response.ok) {
+            throw new Error('oops! try again!');
+          }
+          
+          const { token, user } = await response.json();
+          console.log(user);
+          Auth.login(token);
         } catch (err) {
           console.error(err);
           setShowAlert(true);
