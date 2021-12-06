@@ -28,7 +28,7 @@ const formHandler = (values) => {
       console.log(data)
       // 
       return fetch(
-        `https://api.petfinder.com/v2/animals?type=${values.type}`,
+        `https://api.petfinder.com/v2/animals?type=${values.type}&breed=${values.breed}&gender=${values.gender}`,
         //   determined url plus params, 2 to start data.params included to gate search
         {
           method: "GET",
