@@ -19,7 +19,7 @@ function PetSearch() {
   return (
     <div className = 'mainContainer'>
     <Container> 
-    <div className="Form">
+    <div className="petForm">
       <h1>Next Stop a new best friend!</h1>
       <Formik
         initialValues={{ 
@@ -61,6 +61,11 @@ function PetSearch() {
         </Form>
       </Formik>
     </div>
+      </Container>
+      <Container>
+        <h1>
+          
+        </h1>
       </Container>
     </div>
   );
