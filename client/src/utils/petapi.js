@@ -25,9 +25,11 @@ const formHandler = (values) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
+      // 
       return fetch(
-        `https://api.petfinder.com/v2/animals?type=dog`,
-        //   determined url plus params, 2 to start
+        `https://api.petfinder.com/v2/animals?type=${values.type}`,
+        //   determined url plus params, 2 to start data.params included to gate search
         {
           method: "GET",
           mode: "cors",
@@ -37,7 +39,7 @@ const formHandler = (values) => {
 
             Authorization: "Bearer " + data.access_token,
           },
-        }
+        },
       ).then((res) => res.json());
     });
 };
