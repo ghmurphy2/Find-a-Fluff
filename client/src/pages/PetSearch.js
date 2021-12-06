@@ -3,6 +3,7 @@ import { React, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Formik, Field, Form, useFormik } from "formik";
 import formHandler from "../utils/petapi";
+import{ Card} from 'react-bootstrap'
 // import { getMe, deleteAlbum } from '../utils/API';
 // import Auth from '../utils/auth';
 // import loading from '../loading.gif'
@@ -13,7 +14,10 @@ import "../App.css";
 
 function PetSearch() {
 const [searchedPets, setSearchedPets] = useState([]);
+
+
 console.log('pets are', searchedPets)
+// render from here
   //  const [searchInput, setSearchInput] = useState('');
   return (
     <div className="mainContainer">
@@ -37,10 +41,12 @@ console.log('pets are', searchedPets)
               // console.log(values);
               formHandler(values).then((data) => {
                 setSearchedPets(data.animals)
-              });
+              })
+              
+              // .then((renderPetCard(searchedPets)));
             }}
           >
-            {/* request params, animal type, breed, zip code distance from, good_children checkbox, good cat checkbox, good dog checkbox, gender checkbox, size check, limit */}
+      
             <Form>
               <h1>Please select the trait for your new best friend!</h1>
               <h1> </h1>
@@ -94,10 +100,25 @@ console.log('pets are', searchedPets)
         </div>
       </Container>
       <Container>
-        <h1></h1>
+     
       </Container>
     </div>
   );
 }
-// ReactDOM.render(<PetSearch />, document.getElementById('body'))
+
+//   const renderPetCard = (props) =>{
+//     <Card style={{ width: '18rem' }}>
+//   <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+//   <Card.Body>
+//     <Card.Title>Card Title</Card.Title>
+//     <Card.Text>{props.description}
+//     </Card.Text>
+//   </Card.Body>
+//   <Card.Body>
+//     <Card.Link href="#">{props.>
+//     <Card.Link href="#">Another Link</Card.Link>
+//   </Card.Body>
+// </Card>
+//   }
+
 export default PetSearch;
