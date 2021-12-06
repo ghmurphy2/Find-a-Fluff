@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const dogSchema = new Schema({
+const breedSchema = new Schema({
     name:{
         type: String
     },
@@ -9,7 +9,7 @@ const dogSchema = new Schema({
         type: String,
         required: true
     },
-    imageURL: {
+    breedId: {
         type: String,
         required: true
     },
@@ -57,6 +57,6 @@ const dogSchema = new Schema({
     }
 })
 
-const Dog = mongoose.model('Dog', dogSchema)
+const Breed = mongoose.model('Breed', breedSchema)
 
-module.exports = Dog
+module.exports = Breed
