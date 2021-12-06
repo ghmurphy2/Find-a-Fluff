@@ -37,6 +37,18 @@ export const loginUser = (userData) => {
 //Search Dog Breeds
 export const searchDogBreeds = (query) => {
   return fetch(`https://dog.ceo/api/breed/${query}/images/random/20`);
+
+// DELETE IMAGE for Logged in User
+
+export const deleteBreed = (breedData, token) => {
+  console.log("breedData: " + breedData);
+    return fetch(`/api/users/breeds/${breedData}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+
 };
 
 // save breed data for a logged in user
