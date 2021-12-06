@@ -2,11 +2,11 @@
 // display breed, name, location, photo if available, full pet history if possible
 // form for breed, location, size? information quailty
 
-import { Formik, Field, Form, useFormik } from "formik";
+
 // document.addEventListener("DOMContentLoaded", formHandler);
 const apiKey = "5lxmipzTjAo8PkmJwYYBpqT7OMJ46Os5Fbn4Wer8aDN83QBx88";
 const secret = "spzjkthhuaI4tp1ChWV15hQHYgbTW4bHyxSuZbbL";
-let token;
+
 
 const formHandler = (values) => {
   console.log(values);
@@ -25,9 +25,11 @@ const formHandler = (values) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
+      // 
       return fetch(
-        `https://api.petfinder.com/v2/animals?type=dog`,
-        //   determined url plus params, 2 to start
+        `https://api.petfinder.com/v2/animals?type=${values.type}&breed=${values.breed}&gender=${values.gender}`,
+        //   determined url plus params, 2 to start data.params included to gate search
         {
           method: "GET",
           mode: "cors",
@@ -37,30 +39,13 @@ const formHandler = (values) => {
 
             Authorization: "Bearer " + data.access_token,
           },
-        }
+        },
       ).then((res) => res.json());
     });
 };
 
-// on success
 
-function renderPets(res) {
-  console.log(res);
-  //   //
-  //   var petName = res.petfinder.pet.name.$t;
-  //   var img = res.petfinder.pet.media.photos.photo[0].$t;
-  //   var id = res.petfinder.pet.id.$t;
-  //   var breed = res.petfinder.pet.breed.primary$t;
-  //   var email = res.petfinder.pet.contact.email.$t;
-  //   var phoneNum = res.petfinder.pet.contact.phone.$t;
-  //   var distanceAway = res.petfinder.pet.distance.$t;
-  //   var available = res.petfinder.pet.status.$t;
-  //   // additional pet info
-  //   // var petName = res.petfinder.pet.name.$t;
-  //   // var petName = res.petfinder.pet.name.$t;
-  //   var newName = document.createElement("a");
-  //   var newDiv = document.createElement("div");
-  //   newName.textContent = petName;
-  //   newName.href = "https://www.petfinder.com/petdetail/" + id;
-}
-export default formHandler;
+
+
+export default formHandler ; 
+
