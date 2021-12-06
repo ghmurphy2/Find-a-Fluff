@@ -98,13 +98,16 @@ const SavedBreeds = () => {
               // console.log("this is the breed: ", breed)
               // console.log(userData.savedBreeds)
               return (
-                <Card key={breed._id} border='dark'>
+                <Card style={{ width: '18rem' }} key={breed.breedId} border='dark'>
                   {breed ? <Card.Img src={breed.breedId} alt="an image" variant='top' /> : null}
                   <Card.Body>
-                    <Card.Title>###Name</Card.Title>
+                    <Card.Title>{breed.breedId}</Card.Title>
           
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed._id)}>
-                      Delete this Image!
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed.breedId)}>
+                      Delete this Breed!
+                    </Button>
+                    <Button className='btn-block btn-sucsess' onClick={() => handleDeleteBreed(breed.breedId)}>
+                      Search this Breed for Adoption!
                     </Button>
                   </Card.Body>
                 </Card>

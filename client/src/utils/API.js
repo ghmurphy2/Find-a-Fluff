@@ -35,6 +35,7 @@ export const loginUser = (userData) => {
 
 
 // DELETE IMAGE for Logged in User
+
 export const deleteBreed = (breedData, token) => {
   console.log("breedData: " + breedData);
     return fetch(`/api/users/breeds/${breedData}`, {

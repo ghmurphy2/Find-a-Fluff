@@ -115,7 +115,7 @@ function SearchBreeds() {
                             <Row >
                             {Array.from({ length: 1 }).map((_, idx) => ( 
                             <Col xs={{order: 'last'}} className="g-4">
-                            <Card  key={breed.breedId} border='dark'>
+                            <Card style={{ width: '18rem' }} key={breed.breedId} border='dark'>
                                 {breed ? (
                                     <Card.Img src={breed.breedId} alt={`The picture for `} variant='top' />
                                 ): null}
