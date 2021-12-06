@@ -63,7 +63,7 @@ function SearchBreeds() {
 
         try {
             const response = await saveBreed(breedToSave, token);
-
+            console.log(breedToSave)
             if(!response.ok) {
                 throw new Error('ruff-row! something went wrong!');
             }

@@ -1,15 +1,15 @@
 // ================THIS PAGE DISPLAYS USER'S SAVED IMAGES, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Card } from 'react-bootstrap';
-import { getMe, deleteImage } from '../utils/API';
+import { getMe, deleteBreed } from '../utils/API';
 import Auth from '../utils/auth';
 import loading from '../loading.gif'
 // import logo from '../logo.svg'
-// import { removeImageId } from '../utils/localStorage';
+import { removeBreedId } from '../utils/localStorage';
 
 import '../App.css';
 
-const MyImages = () => {
+const SavedBreeds = () => {
     const [userData, setUserData] = useState({});
   
     // use this to determine if `useEffect()` hook needs to run again
@@ -41,7 +41,7 @@ const MyImages = () => {
     }, [userDataLength]);
   
     // create function that accepts the image's mongo _id value as param and deletes the image from the database
-    const handleDeleteImage = async (imageId) => {
+    const handleDeleteBreed = async (breedId) => {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
   
       if (!token) {
@@ -49,7 +49,7 @@ const MyImages = () => {
       }
   
       try {
-        const response = await deleteImage(imageId, token);
+        const response = await deleteBreed(breedId, token);
   
         if (!response.ok) {
           throw new Error('something went wrong!');
@@ -60,7 +60,7 @@ const MyImages = () => {
 
         // **========SET UP LOCAL STORAGE??????=========**
         // upon success, remove image's id from localStorage
-        // removeImageId(imageId);
+        removeBreedId(breedId);
       } catch (err) {
         console.error(err);
       }
@@ -88,20 +88,19 @@ const MyImages = () => {
         </Container>
         <Container>
           <h2>
-            {userData.savedImages.length
-              ? `Viewing ${userData.savedImages.length} saved ${userData.savedImages.length === 1 ? 'image' : 'images'}:`
-              : 'You have no saved images!'}
+            {userData.savedBreeds.length
+              ? `Viewing ${userData.savedBreeds.length} saved ${userData.savedBreeds.length === 1 ? 'breed' : 'breeds'}:`
+              : 'You have no saved breeds!'}
           </h2>
           <Container>
-            {userData.savedImages.map((image) => {
+            {userData.savedBreeds.map((breed) => {
               return (
-                <Card key={image.imageId} border='dark'>
-                  {image ? <Card.Img src={image.imageId} alt="an image" variant='top' /> : null}
+                <Card key={breed.breedId} border='dark'>
+                  {breed ? <Card.Img src={breed.breedId} alt="an image" variant='top' /> : null}
                   <Card.Body>
-                    <Card.Title>{image.title}</Card.Title>
-                    <p className='small'>Creator: {image.username}</p>
-                    <Card.Text>{image.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteImage(image.imageId)}>
+                    <Card.Title>###Name</Card.Title>
+          
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed.breedId)}>
                       Delete this Image!
                     </Button>
                   </Card.Body>
@@ -114,4 +113,4 @@ const MyImages = () => {
     );
   };
 
-export default MyImages;
+export default SavedBreeds;
