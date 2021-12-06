@@ -59,7 +59,7 @@ const SavedBreeds = () => {
         setUserData(updatedUser);
 
         // **========SET UP LOCAL STORAGE??????=========**
-        // upon success, remove image's id from localStorage
+        // upon success, remove breed's id from localStorage
         removeBreedId(breedId);
       } catch (err) {
         console.error(err);

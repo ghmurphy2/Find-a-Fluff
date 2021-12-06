@@ -41,6 +41,7 @@ function SearchBreeds() {
                 breedId: breed
             }));
             console.log(breedData);
+            console.log(breedData[0]);
             console.log(searchInput)
             setSearchedBreeds(breedData);
             setSearchInput('');
@@ -52,7 +53,7 @@ function SearchBreeds() {
     //create function to handle saving a breed to our database
     const handleSaveBreed = async (breedId) => {
         //find breed in `searchedBreeds` state by matching id
-        const breedToSave = searchedBreeds.find((breed) => breed.breedId === breedId );
+        const breedToSave = searchedBreeds.find((breedData) => breedData.breedId === breedId );
 
         //get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -64,12 +65,14 @@ function SearchBreeds() {
         try {
             const response = await saveBreed(breedToSave, token);
             console.log(breedToSave)
+            console.log(response)
             if(!response.ok) {
                 throw new Error('ruff-row! something went wrong!');
             }
 
             //if breed successfully saves to user's account, save breed id to state
             setSavedBreedIds([...savedBreedIds, breedToSave.breedId]);
+            console.log('breed saved!')
         } catch (err) {
             console.error(err);
         }
