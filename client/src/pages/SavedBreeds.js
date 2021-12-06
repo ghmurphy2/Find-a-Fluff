@@ -41,7 +41,7 @@ const SavedBreeds = () => {
     }, [userDataLength]);
   
     // create function that accepts the image's mongo _id value as param and deletes the image from the database
-    const handleDeleteBreed = async (breed) => {
+    const handleDeleteBreed = async (breedId) => {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
   
       if (!token) {
@@ -49,7 +49,8 @@ const SavedBreeds = () => {
       }
   
       try {
-        const response = await deleteBreed(breed._id, token);
+        console.log("breed id: "+breedId)
+        const response = await deleteBreed(breedId, token);
         console.log(response)
         if (!response.ok) {
           throw new Error('response WAS NOT OK!');
@@ -60,7 +61,7 @@ const SavedBreeds = () => {
 
         // **========SET UP LOCAL STORAGE??????=========**
         // upon success, remove breeds's id from localStorage
-        removeBreedId(breed._id);
+        removeBreedId(breedId);
       } catch (err) {
         console.error(err);
       }
@@ -94,8 +95,8 @@ const SavedBreeds = () => {
           </h2>
           <Container>
             {userData.savedBreeds.map((breed) => {
-              console.log("this is the breed: ", breed)
-              console.log(userData.savedBreeds)
+              // console.log("this is the breed: ", breed)
+              // console.log(userData.savedBreeds)
               return (
                 <Card key={breed._id} border='dark'>
                   {breed ? <Card.Img src={breed.breedId} alt="an image" variant='top' /> : null}

@@ -45,7 +45,6 @@ module.exports = {
   // save a breed to a user's `savedBreeds` field by adding it to the set (to prevent duplicates)
   // user comes from `req.user` created in the auth middleware function
   async saveBreed({ user, body }, res) {
-    console.log(res);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
