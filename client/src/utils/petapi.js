@@ -2,14 +2,17 @@
 // display breed, name, location, photo if available, full pet history if possible
 // form for breed, location, size? information quailty
 
-// import { Formik, Field, Form, useFormik } from "formik";
+import { Formik, Field, Form, useFormik } from "formik";
 // document.addEventListener("DOMContentLoaded", formHandler);
 const apiKey = "5lxmipzTjAo8PkmJwYYBpqT7OMJ46Os5Fbn4Wer8aDN83QBx88";
 const secret = "spzjkthhuaI4tp1ChWV15hQHYgbTW4bHyxSuZbbL";
+var values = localStorage.getItem('values');
+let token;
 
-const formHandler = (params) => {
+
+const formHandler = () => {
   document
-    .getElementsByClassName("petForm")
+    .getElementsByClassName("petSubmitBtn")
     .addEventlistener("click", function (e) {
       e.preventDefault();
       // var url = 'https://api.https://api.petfinder.com/v2/.com/pet.getRandom';
@@ -27,11 +30,16 @@ const formHandler = (params) => {
       })
         .then((res) => res.json())
         .then((data) => {
-            const token = data.access_token;
+            token = data.access_token;
+            console.log(token)
         })
         .then(() => {
+          
+          localStorage.getItem({values})
+          console.log({values})
+          
           fetch(
-            `https://api.petfinder.com/v2/animals?type=${params.type}&location=${params.zip}`,
+            `https://api.petfinder.com/v2/animals?type=${values.type}&location=${values.zipCode}`,
             //   determined url plus params, 2 to start
             {
               method: "GET",
@@ -40,12 +48,13 @@ const formHandler = (params) => {
                 "Content-Type": "application/json",
                 //  include bearer token for fetch request
                 
-                // Authorization: "Bearer" + token,
+                Authorization: "Bearer" + token,
               },
             }
           )
             .then((res) => res.json())
             .then((data) => renderPets(data.pet));
+            
         });
     });
 };
