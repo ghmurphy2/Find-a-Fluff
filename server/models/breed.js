@@ -9,7 +9,7 @@ const breedSchema = new Schema({
         type: String,
         required: true
     },
-    imageURL: {
+    breedId: {
         type: String,
         required: true
     },
