@@ -32,7 +32,7 @@ const AppNavbar = () => {
                       {Auth.loggedIn() ? (
                       <>
                           
-                          <Nav.Link as={Link} to='/myImages'>
+                          <Nav.Link as={Link} to='/savedBreeds'>
                           Saved Breeds
                           </Nav.Link>
                           {/* <Nav.Link as={Link} to='/upload'>

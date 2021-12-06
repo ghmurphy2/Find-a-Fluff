@@ -41,7 +41,7 @@ const SavedBreeds = () => {
     }, [userDataLength]);
   
     // create function that accepts the image's mongo _id value as param and deletes the image from the database
-    const handleDeleteBreed = async (breedId) => {
+    const handleDeleteBreed = async (breed) => {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
   
       if (!token) {
@@ -49,18 +49,18 @@ const SavedBreeds = () => {
       }
   
       try {
-        const response = await deleteBreed(breedId, token);
-  
+        const response = await deleteBreed(breed._id, token);
+        console.log(response)
         if (!response.ok) {
-          throw new Error('something went wrong!');
+          throw new Error('response WAS NOT OK!');
         }
   
         const updatedUser = await response.json();
         setUserData(updatedUser);
 
         // **========SET UP LOCAL STORAGE??????=========**
-        // upon success, remove breed's id from localStorage
-        removeBreedId(breedId);
+        // upon success, remove breeds's id from localStorage
+        removeBreedId(breed._id);
       } catch (err) {
         console.error(err);
       }
@@ -94,13 +94,15 @@ const SavedBreeds = () => {
           </h2>
           <Container>
             {userData.savedBreeds.map((breed) => {
+              console.log("this is the breed: ", breed)
+              console.log(userData.savedBreeds)
               return (
-                <Card key={breed.breedId} border='dark'>
+                <Card key={breed._id} border='dark'>
                   {breed ? <Card.Img src={breed.breedId} alt="an image" variant='top' /> : null}
                   <Card.Body>
                     <Card.Title>###Name</Card.Title>
           
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed.breedId)}>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed._id)}>
                       Delete this Image!
                     </Button>
                   </Card.Body>
