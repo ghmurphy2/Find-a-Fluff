@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema } = require('mongoose');
 
 const breedSchema = new Schema({
     name:{
@@ -7,7 +6,7 @@ const breedSchema = new Schema({
     },
     breed: {
         type: String,
-        required: true
+        // required: true
     },
     breedId: {
         type: String,
@@ -55,8 +54,8 @@ const breedSchema = new Schema({
             type: Boolean
         }
     }
-})
+});
 
-const Breed = mongoose.model('Breed', breedSchema)
 
-module.exports = Breed
+
+module.exports = breedSchema;
