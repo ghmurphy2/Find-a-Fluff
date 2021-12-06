@@ -57,6 +57,7 @@ const SavedBreeds = () => {
         }
   
         const updatedUser = await response.json();
+        console.log(updatedUser)
         setUserData(updatedUser);
 
         // **========SET UP LOCAL STORAGE??????=========**
