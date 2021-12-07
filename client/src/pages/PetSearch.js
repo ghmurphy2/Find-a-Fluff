@@ -28,11 +28,10 @@ function PetSearch() {
               type: "",
               breed: "",
               gender: "",
-              size: "",
               zipCode: "",
-              childSafe: false,
-              dogSafe: false,
-              catSafe: false,
+              childSafe: "",
+              dogSafe: "",
+              catSafe: "",
             }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));
