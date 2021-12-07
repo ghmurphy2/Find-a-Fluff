@@ -134,6 +134,9 @@ function PetSearch() {
                         <p>{pet.name}{pet.description}</p>
                         <Card.Title className='text-dark'>{pet.name}</Card.Title>
                         <Card.Text className='text-dark'>{pet.description}</Card.Text>
+                        <Card.Text className='text-dark'>{pet.contact.email}</Card.Text>
+                        <Card.Text className='text-dark'>{pet.contact.phonenumber}</Card.Text>
+                        <Card.Link className='text-dark' href={pet.url}>{pet.url}</Card.Link>
                       
                      
                         {/* <Card.Link className='text-dark' href="#">{pet.contact}</Card.Link>
