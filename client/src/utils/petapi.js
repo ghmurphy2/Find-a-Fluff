@@ -24,9 +24,28 @@ const formHandler = (values) => {
     .then((res) => res.json())
     .then((data) => {
       // console.log(data);
-      let query =  `https://api.petfinder.com/v2/animals?status=adoptable&limit=5&page=1`
+      let query =  `https://api.petfinder.com/v2/animals?status=adoptable&limit=5`
         if (values.type !== '' ){
           query += `&type=${values.type}`
+          
+          if (values.type !== '' ){
+            query += `&breed=${values.breed}`
+          }
+          if (values.type !== '' ){
+            query += `&gender=${values.gender}`
+          }
+          if (values.type !== '' ){
+            query += `&location=${values.zipCode}`
+          }
+          if (values.type !== '' ){
+            query += `&good_with_dogs=${values.dogSafe}`
+          }
+          if (values.type !== '' ){
+            query += `&good_with_children=${values.childSafe}`
+          }
+          if (values.type !== '' ){
+            query += `&good_with_cats=${values.catSafe}`
+          }
         }
       return fetch( query ,
         
