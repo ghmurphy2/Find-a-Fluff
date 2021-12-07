@@ -1,9 +1,8 @@
 // ================THIS PAGE DISPLAYS USER'S SAVED ALBUMS, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import { React, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { Formik, Field, Form } from "formik";
 import formHandler from "../utils/petapi";
-import { Card, CardGroup } from "react-bootstrap";
 // import { getMe, deleteAlbum } from '../utils/API';
 // import Auth from '../utils/auth';
 // import loading from '../loading.gif'
@@ -25,18 +24,18 @@ function PetSearch() {
           <h1>Next Stop a new best friend!</h1>
           <Formik
             initialValues={{
-              type: "",
-              breed: "",
-              gender: "",
-              zipCode: "",
-              childSafe: "",
-              dogSafe: "",
-              catSafe: "",
+              type: '',
+              breed: '',
+              gender: '',
+              zipCode: '',
+              childSafe: '',
+              dogSafe: '',
+              catSafe: '',
             }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));
               localStorage.setItem("values", JSON.stringify(values));
-              if (values.gender === "") values.gender = "unknown";
+              ;
               // console.log(values);
               formHandler(values).then((data) => {
                 return setSearchedPets(data.animals);
@@ -107,12 +106,12 @@ function PetSearch() {
               : "Search above for a new pal!"}
           </h2>
         
-            <Container>
+            <Container >
               {searchedPets.map((pet) => {
                 console.log(pet);
                 return (
                 
-                  <Card key={pet._id} border="dark">
+                  <Card key={pet._id} border="dark" >
                     {
                       pet.primary_photo_cropped ? (
                         <Card.Img
@@ -132,13 +131,14 @@ function PetSearch() {
                       // placeholder
                     }
                           <Card.Body>
-                   
-                        <Card.Title>{pet.name}</Card.Title>
-                        <Card.Text>{pet.description}</Card.Text>
+                        <p>{pet.name}{pet.description}</p>
+                        <Card.Title className='text-dark'>{pet.name}</Card.Title>
+                        <Card.Text className='text-dark'>{pet.description}</Card.Text>
                       
                      
-                        <Card.Link href="#">{pet.organization}</Card.Link>
-                        <Card.Link href="#">{pet.location}</Card.Link>
+                        {/* <Card.Link className='text-dark' href="#">{pet.contact}</Card.Link>
+                        <Card.Link className='text-dark'  href="#">{pet.location}</Card.Link> */}
+
                       </Card.Body>
                     </Card>
               
