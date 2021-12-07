@@ -2,11 +2,9 @@
 // display breed, name, location, photo if available, full pet history if possible
 // form for breed, location, size? information quailty
 
-
 // document.addEventListener("DOMContentLoaded", formHandler);
 const apiKey = "5lxmipzTjAo8PkmJwYYBpqT7OMJ46Os5Fbn4Wer8aDN83QBx88";
 const secret = "spzjkthhuaI4tp1ChWV15hQHYgbTW4bHyxSuZbbL";
-
 
 const formHandler = (values) => {
   console.log(values);
@@ -25,10 +23,14 @@ const formHandler = (values) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
-      // 
-      return fetch(
-        `https://api.petfinder.com/v2/animals?type=${values.type}&breed=${values.breed}&gender=${values.gender}`,
+      // console.log(data);
+      let query =  `https://api.petfinder.com/v2/animals?status=adoptable&limit=5&page=1`
+        if (values.type !== '' ){
+          query += `&type=${values.type}`
+        }
+      return fetch( query ,
+        
+      //  ?type=${values.type}&breed=${values.breed}&gender=${values.gender}&good_with_children=${values.childSafe}&location=${values.zipCode}&good_with_cats=${values.catSafe}&good_with_dogs=${values.dogSafe}`,
         //   determined url plus params, 2 to start data.params included to gate search
         {
           method: "GET",
@@ -39,13 +41,9 @@ const formHandler = (values) => {
 
             Authorization: "Bearer " + data.access_token,
           },
-        },
+        }
       ).then((res) => res.json());
     });
 };
 
-
-
-
-export default formHandler ; 
-
+export default formHandler;
