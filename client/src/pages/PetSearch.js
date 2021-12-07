@@ -1,9 +1,8 @@
 // ================THIS PAGE DISPLAYS USER'S SAVED ALBUMS, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import { React, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import { Formik, Field, Form } from "formik";
 import formHandler from "../utils/petapi";
-import { Card, CardGroup } from "react-bootstrap";
 // import { getMe, deleteAlbum } from '../utils/API';
 // import Auth from '../utils/auth';
 // import loading from '../loading.gif'
@@ -25,13 +24,13 @@ function PetSearch() {
           <h1>Next Stop a new best friend!</h1>
           <Formik
             initialValues={{
-              type: "",
-              breed: "",
-              gender: "",
-              zipCode: "",
-              childSafe: "",
-              dogSafe: "",
-              catSafe: "",
+              type: '',
+              breed: '',
+              gender: '',
+              zipCode: '',
+              childSafe: '',
+              dogSafe: '',
+              catSafe: '',
             }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));

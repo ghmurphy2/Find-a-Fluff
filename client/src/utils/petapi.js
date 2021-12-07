@@ -28,22 +28,22 @@ const formHandler = (values) => {
         if (values.type !== '' ){
           query += `&type=${values.type}`
           
-          if (values.type !== '' ){
+          if (values.breed !== '' ){
             query += `&breed=${values.breed}`
           }
-          if (values.type !== '' ){
+          if (values.gender !== '' ){
             query += `&gender=${values.gender}`
           }
-          if (values.type !== '' ){
+          if (values.zipCode !== '' ){
             query += `&location=${values.zipCode}`
           }
-          if (values.type !== '' ){
+          if (values.dogSafe !== '' ){
             query += `&good_with_dogs=${values.dogSafe}`
           }
-          if (values.type !== '' ){
+          if (values.childSafe !== '' ){
             query += `&good_with_children=${values.childSafe}`
           }
-          if (values.type !== '' ){
+          if (values.catSafe !== '' ){
             query += `&good_with_cats=${values.catSafe}`
           }
         }
