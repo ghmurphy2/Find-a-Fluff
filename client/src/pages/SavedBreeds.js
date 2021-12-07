@@ -1,7 +1,8 @@
 // ================THIS PAGE DISPLAYS USER'S SAVED IMAGES, SHOULD REDIRECT HERE AFTER LOGGING IN=========
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Card } from 'react-bootstrap';
+import { Container, Button, Card, Nav} from 'react-bootstrap';
 import { getMe, deleteBreed } from '../utils/API';
+import { Link } from "react-router-dom";
 import Auth from '../utils/auth';
 import loading from '../loading.gif'
 // import logo from '../logo.svg'
@@ -98,18 +99,23 @@ const SavedBreeds = () => {
             {userData.savedBreeds.map((breed) => {
               // console.log("this is the breed: ", breed)
               // console.log(userData.savedBreeds)
+              const arr = breed.breedId.split('/')
+              const str = arr[arr.length-2]
+              const title = str.charAt(0).toUpperCase()+str.slice(1)
+              console.log(title)
+
               return (
                 <Card style={{ width: '18rem' }} key={breed.breedId} border='dark'>
                   {breed ? <Card.Img src={breed.breedId} alt="an image" variant='top' /> : null}
                   <Card.Body>
-                    <Card.Title>{breed.breedId}</Card.Title>
+                    <Card.Title>{title}</Card.Title>
           
                     <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed._id)}>
                       Delete this Breed!
                     </Button>
-                    <Button className='btn-block btn-sucsess' onClick={() => handleDeleteBreed(breed.breedId)}>
-                      Search this Breed for Adoption!
-                    </Button>
+                    <Nav.Link as={Link} to="/PetSearch">
+                    Search this breed for adoption!
+                    </Nav.Link>
                   </Card.Body>
                 </Card>
               );
