@@ -104,7 +104,7 @@ const SavedBreeds = () => {
                   <Card.Body>
                     <Card.Title>{breed.breedId}</Card.Title>
           
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed.breedId)}>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBreed(breed._id)}>
                       Delete this Breed!
                     </Button>
                     <Button className='btn-block btn-sucsess' onClick={() => handleDeleteBreed(breed.breedId)}>
