@@ -8,7 +8,7 @@ import formHandler from "../utils/petapi";
 // import loading from '../loading.gif'
 // import Gallery from 'react-photo-gallery';
 // import { removeImageId } from '../utils/localStorage';
-
+import logo from '../logo.svg'
 import "../App.css";
 
 function PetSearch() {
@@ -122,7 +122,7 @@ function PetSearch() {
                       ) : (
                         <Card.Img
                           src={
-                            "https://i.picsum.photos/id/196/200/200.jpg?hmac=sQvBWK3YS9nyc8fxqMAEar9EpxOlkMcWL-VePbARdIU"
+                            logo
                           }
                           alt="an image"
                           variant="top"
