@@ -106,7 +106,7 @@ function SearchBreeds() {
             <Container>
                 <h2>
                     {searchedBreeds.length
-                        ? `Viewing ${searchedBreeds.length} reuslts:`
+                        ? `Viewing ${searchedBreeds.length} results:`
                         : 'Search for a breed to begin!'}
                 </h2>
                 <CardGroup>

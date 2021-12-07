@@ -3,7 +3,7 @@ import { React, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Formik, Field, Form } from "formik";
 import formHandler from "../utils/petapi";
-import { Card } from "react-bootstrap";
+import { Card, CardGroup } from "react-bootstrap";
 // import { getMe, deleteAlbum } from '../utils/API';
 // import Auth from '../utils/auth';
 // import loading from '../loading.gif'
@@ -25,22 +25,22 @@ function PetSearch() {
           <h1>Next Stop a new best friend!</h1>
           <Formik
             initialValues={{
-              type: '',
-              breed: '',
-              gender: '',
-              size: '',
-              zipcode: '',
-              childSafe: '',
-              dogSafe: '',
-              catSafe: '',
+              type: "",
+              breed: "",
+              gender: "",
+              size: "",
+              zipCode: "",
+              childSafe: false,
+              dogSafe: false,
+              catSafe: false,
             }}
             onSubmit={async (values) => {
               await new Promise((resolve) => setTimeout(resolve, 500));
               localStorage.setItem("values", JSON.stringify(values));
+              if (values.gender === "") values.gender = "unknown";
               // console.log(values);
               formHandler(values).then((data) => {
-                return(
-                setSearchedPets(data.animals));
+                return setSearchedPets(data.animals);
               });
 
               // .then((renderPetCard(searchedPets)));
@@ -107,33 +107,46 @@ function PetSearch() {
                 }:`
               : "Search above for a new pal!"}
           </h2>
-          <Container>
-            {searchedPets.map((pet) => {
-              console.log(pet);
-              console.log(searchedPets);
-              return (
-                <Card key={pet._id} border="dark">
-                  {pet ? (
-                    <Card.Img src={pet.petId} alt="an image" variant="top" />
-                  ) : null}
-                  <Card style={{ width: "18rem" }}>
-                    <Card.Img
-                      variant="top"
-                      src="holder.js/100px180?text=Image cap"
-                    />
-                    <Card.Body>
-                      <Card.Title>{pet.name}</Card.Title>
-                      <Card.Text>{pet.description}</Card.Text>
-                    </Card.Body>
-                    <Card.Body>
-                      <Card.Link href="#">{pet.organization}</Card.Link>
-                      <Card.Link href="#">{pet.location}</Card.Link>
-                    </Card.Body>
-                  </Card>
-                </Card>
-              );
-            })}
-          </Container>
+        
+            <Container>
+              {searchedPets.map((pet) => {
+                console.log(pet);
+                return (
+                
+                  <Card key={pet._id} border="dark">
+                    {
+                      pet.primary_photo_cropped ? (
+                        <Card.Img
+                          src={pet.primary_photo_cropped.medium}
+                          alt="an image"
+                          variant="top"
+                        />
+                      ) : (
+                        <Card.Img
+                          src={
+                            "https://i.picsum.photos/id/196/200/200.jpg?hmac=sQvBWK3YS9nyc8fxqMAEar9EpxOlkMcWL-VePbARdIU"
+                          }
+                          alt="an image"
+                          variant="top"
+                        />
+                      )
+                      // placeholder
+                    }
+                          <Card.Body>
+                   
+                        <Card.Title>{pet.name}</Card.Title>
+                        <Card.Text>{pet.description}</Card.Text>
+                      
+                     
+                        <Card.Link href="#">{pet.organization}</Card.Link>
+                        <Card.Link href="#">{pet.location}</Card.Link>
+                      </Card.Body>
+                    </Card>
+              
+                );
+              })}
+            </Container>
+      
         </Container>
       </Container>
     </div>
