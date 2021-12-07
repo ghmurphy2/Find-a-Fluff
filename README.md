@@ -1,26 +1,53 @@
 # Sorta My Face, the Image Upload and Album Creation App
-<img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+<img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" >
 <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
 <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
 <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
+<img src=https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white/>
 
-<!-- This is a full stack web applicating utilizing a MERN Stack to allow a user to search for books using Google's search API, and sign-up/login to save books in a personalized collection. This app demonstrates refactoring skills by altering REST APIs into GraphQL with Apollo. -->
+## Description
+This is a full stack web application utiilizing a MERN Stack to allow a user  to signup/login, search for dog breeds, save dog breeds, and then search for pet adoptions. This app demonstrates using a MongoDB to store saved breeds and user info, React.js to create the client side, and Express/Node.js to communicate back and forth with our server.
+
+## Table of Contents
+1. [Description](#Description)
+2. [Installation](#Installation)
+3. [Contributors](#Contribution)
+4. [NPM Libraries](#Libraries)
+5. [Deployed Links](#Deployed)
+5. [Authors](#Authors)
+4. [License](#License)
+
+Landing Page
+<img src="./assets/alanding.gif">
+
+Sign-Up/Log-In
+<img src="./assets/blogin.gif">
+
+Breed Search
+<img src="./assets/cbreedsearch.gif">
+
+Breed Save
+<img src="./assets/dbreedsave.gif">
+
+## Installation
+
+The user will need to clone the repository from GitHub and run the command `npm install` on their command line from the root directory, after install user will need to run `npm develop` turn both servers for communication.
+
+## Libraries
+* Bootstrap
+* JWT Token
+* Bootstrap-react
+* Formik
+* Mongoose
+* Express
 
 
-## Getting Started
+## Deployed Links
 
-<!-- The user will need to clone the repository from GitHub and run the command `npm install` on their command line, after install user will need to run `npm start` turn the server on for communication. -->
-
-
-## Deployed Link
-
-* [See Live Site](https://afternoon-island-31666.herokuapp.com/)
-* [See GitHub Repo](https://github.com/ghmurphy2/Sorta-My-Face)
-
-<!-- <img src="livesite.png"> -->
-
+* [See Live Site](https://hidden-temple-34647.herokuapp.com/)
+* [See GitHub Repo](https://github.com/ghmurphy2/Find-a-Fluff)
 
 
 ## Authors
